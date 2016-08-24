@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -29,8 +28,7 @@ func connect() (session *mgo.Session) {
 	connectURL := "localhost"
 	session, err := mgo.Dial(connectURL)
 	if err != nil {
-		fmt.Printf("Can't connect to mongo, go error %v\n", err)
-		os.Exit(1)
+		log.Fatalf("Can't connect to mongo, go error %v\n", err)
 	}
 	session.SetSafe(&mgo.Safe{})
 	return session
